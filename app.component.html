@@ -1,0 +1,39 @@
+<nav class="navbar navbar-expand-sm bg-success navbar-dark">
+  <a class="navbar-brand" href="#"> Products </a>
+</nav>
+
+<div class="container-fluid">
+  <h1>Productsts</h1>
+<div class="row">
+  <div class="col-8 mx-auto">
+    <button (click)="initNewProd()">Create New Product</button>
+    <table class="table">
+      <thead>
+        <!-- <th>Project Image</th> -->
+        <th>Project Name</th>
+        <th>Details</th>
+        <th>Price</th>
+        <th>Quantity</th>
+        <th>TotalPrice</th>
+        <th>Created Date</th>
+      </thead>
+      <tbody>
+        <tr *ngFor="let product of products">
+          <!-- <td>{{product.image}}</td> -->
+          <td>{{product.productName}}</td>
+          <td>{{product.detail}}</td>
+          <td>{{product.price}}</td>
+          <td>{{product.quantity}}</td>
+          <td>{{product.totalPrice}}</td>
+          <td>{{product.createdDate}}</td>
+          <td><button (click)="editProducts(product)">Edit</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div *ngIf="show">
+    <app-products
+  [prod]="editProduct"
+  (prodsUpdated)="updateProductList($event)"></app-products>
+  </div>
+  
